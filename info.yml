@@ -1,0 +1,9 @@
+data_dir_train : "dataSet/train"
+data_dir_valid : "dataSet/valid"
+data_dir_test : "dataSet/test"
+
+image_dim : 3
+n_classes : 5
+image_size : 224
+batch_size : 16
+learning_rate : 0.00001
