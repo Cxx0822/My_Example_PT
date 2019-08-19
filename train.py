@@ -32,7 +32,7 @@ def my_train():
     if use_gpu:
         model = model.cuda()
 
-    epochs = 10
+    epochs = 20
     for epoch in range(epochs):
         print("Epoch {}/{}".format(epoch, epochs - 1))
         print("-" * 10)
