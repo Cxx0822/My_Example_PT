@@ -17,6 +17,7 @@ n_classes = my_data['n_classes']
 image_size = my_data['image_size']
 batch_size = my_data['batch_size']
 learning_rate = my_data['learning_rate']
+epochs = my_data['epochs']
 
 
 def my_train():
@@ -32,7 +33,6 @@ def my_train():
     if use_gpu:
         model = model.cuda()
 
-    epochs = 20
     for epoch in range(epochs):
         print("Epoch {}/{}".format(epoch, epochs - 1))
         print("-" * 10)
