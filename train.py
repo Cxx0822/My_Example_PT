@@ -55,8 +55,7 @@ def my_train():
             running_loss += loss.item()
             train_total += train_labels.size(0)
 
-        print('train %d epoch loss: %.3f  acc: %.3f ' % (
-            epoch + 1, running_loss / train_total, 100 * train_correct / train_total))
+        print('train %d epoch loss: %.3f  acc: %.3f ' % (epoch, running_loss / train_total, 100 * train_correct / train_total))
         # 模型测试
         correct = 0
         test_loss = 0.0
@@ -76,7 +75,7 @@ def my_train():
             test_total += labels.size(0)
             correct += (predicted == labels.data).sum()
 
-        print('test  %d epoch loss: %.3f  acc: %.3f ' % (epoch + 1, test_loss / test_total, 100 * correct / test_total))
+        print('test  %d epoch loss: %.3f  acc: %.3f ' % (epoch, test_loss / test_total, 100 * correct / test_total))
     torch.save(model, 'model.pt')
 
 
