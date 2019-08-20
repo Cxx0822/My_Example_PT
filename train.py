@@ -1,6 +1,7 @@
 # -*-coding:utf-8-*-
 import torch
 from torch.autograd import Variable
+from tensorboardX import SummaryWriter
 from model import Models
 from load_data import * 
 import yaml
@@ -19,6 +20,8 @@ batch_size = my_data['batch_size']
 learning_rate = my_data['learning_rate']
 epochs = my_data['epochs']
 
+writer = SummaryWriter()
+
 
 def my_train():
     use_gpu = torch.cuda.is_available()
@@ -34,7 +37,7 @@ def my_train():
         model = model.cuda()
 
     for epoch in range(epochs):
-        print("Epoch {}/{}".format(epoch, epochs - 1))
+        print("Epoch {}/{}".format(epoch + 1, epochs))
         print("-" * 10)
         running_loss = 0.0
         train_correct = 0
@@ -55,7 +58,10 @@ def my_train():
             running_loss += loss.item()
             train_total += train_labels.size(0)
 
-        print('train %d epoch loss: %.3f  acc: %.3f ' % (epoch, running_loss / train_total, 100 * train_correct / train_total))
+        print('train %d epoch loss: %.3f  acc: %.3f ' % (epoch + 1, running_loss / train_total, 100 * train_correct / train_total))
+        writer.add_scalar('Train/Loss', running_loss / train_total, epoch + 1)
+        writer.add_scalar('Train/Acc', 100 * train_correct / train_total, epoch + 1) 
+
         # 模型测试
         correct = 0
         test_loss = 0.0
@@ -75,7 +81,11 @@ def my_train():
             test_total += labels.size(0)
             correct += (predicted == labels.data).sum()
 
-        print('test  %d epoch loss: %.3f  acc: %.3f ' % (epoch, test_loss / test_total, 100 * correct / test_total))
+        print('test  %d epoch loss: %.3f  acc: %.3f ' % (epoch + 1, test_loss / test_total, 100 * correct / test_total))
+        writer.add_scalar('Test/Loss', test_loss / test_total, epoch + 1)
+        writer.add_scalar('Test/Acc', 100 * correct / test_total, epoch + 1)
+    writer.close()
+
     torch.save(model, 'model.pt')
 
 
