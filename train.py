@@ -10,7 +10,7 @@ import datetime
 
 with open("info.yml") as stream:
     my_data = yaml.load(stream, Loader=yaml.FullLoader)
-    # python3.6 可能需要去掉 Loader=yaml.FullLoader
+    # python3.6 可能需要去掉 Loader=yaml.FullLoader  
 
 data_dir_train = my_data['data_dir_train']
 data_dir_valid = my_data['data_dir_valid']
