@@ -5,6 +5,9 @@
 &emsp;&emsp;PyTorch 1.2.0   
 &emsp;&emsp;python 3.5.4 
 
+## Simple Network
+&emsp;&emsp;利用神经网络对文本数据集分类。
+
 ### 文件
 &emsp;&emsp;data.txt      
 &emsp;&emsp;simple_network.py 
