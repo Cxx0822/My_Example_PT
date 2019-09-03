@@ -6,7 +6,7 @@
 &emsp;&emsp;python 3.5.4 
 
 ## Simple Network
-&emsp;&emsp;利用神经网络对文本数据集分类。
+&emsp;&emsp;利用神经网络对文本数据集分类。      
 
 ### 文件
 &emsp;&emsp;data.txt      
@@ -33,7 +33,7 @@
 &emsp;&emsp;首先打开`info.yml`，更改里面的配置信息。 
 
 ### 数据集
-&emsp;&emsp;数据集加载采用`DataLoader`模式，返回为可迭代的数据集和标签序列。   
+&emsp;&emsp;数据集加载采用`DataLoader`模式，返回可迭代的数据集和标签序列。   
 
 ### 模型
 &emsp;&emsp;采用普通的卷积，池化和全连接层。    
